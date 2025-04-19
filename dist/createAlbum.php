@@ -1,0 +1,26 @@
+<?php
+    include("db.php");
+    if(isset($_COOKIE["login"])){
+        $email=mysqli_real_escape_string($conn,$_COOKIE["login"]);
+        $code=md5($email);
+        if(isset($_POST["album"])){
+            $album_name=mysqli_real_escape_string($conn,$_POST["album"]);
+            $album_code=md5($album_name);
+            $album_date=date("Y-m-d");
+            $query="INSERT INTO album VALUES('$album_code','$album_name','$album_date','$email')";
+            if(mysqli_query($conn,$query)>0){
+                mkdir("gallery/$code/$album_code");
+                header("location:profile.php?success=1");
+            }
+            else{
+                header("location:profile.php?again=1");
+            }
+        }
+        else{
+            header("location:profile.php?empty=1");
+        }
+    }
+    else{
+        header("location:index.php?cookieExpire=1");
+    }
+?>

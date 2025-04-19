@@ -1,0 +1,21 @@
+<?php
+    include("db.php");
+    if(isset($_COOKIE["login"])){
+        $email=mysqli_real_escape_string($conn,$_COOKIE["login"]);
+        $code=md5($email);
+        if(strlen($_REQUEST["id"])>0){
+            $user_code=mysqli_real_escape_string($conn,$_REQUEST["id"]);
+            $q=mysqli_query($conn,"SELECT email FROM details WHERE code='$user_code'");
+            if($row=mysqli_fetch_array($q)){
+                $user_email=$row[0];
+                $query="DELETE FROM intrested WHERE email='$user_email' AND code='$code'";
+                if(mysqli_query($conn,$query)){
+                    echo "success";
+                }
+            } 
+        }
+    }
+    else{
+        header("location:logout.php");
+    }
+?>
