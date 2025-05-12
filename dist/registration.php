@@ -13,8 +13,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Tektur:wght@400..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"></body>
 
 </head>
-<body class="tw-h-screen tw-bg-[url('imgs/bg-3.jpg')] tw-bg-cover tw-bg-center">
-    
+<body class="tw-h-screen tw-bg-[url('imgs/bg-3.jpg')] tw-bg-cover tw-bg-center" id="reg">
+<?php 
+      if(isset($_GET["mismatch"])){
+        echo "<div class='alert alert-warning tw-mt-20 tw-mx-4 tw-flex tw-justify-between fixed-top' id='alertbar' role='alert'>
+        <span><strong>Mismatch!</strong> Password mismatched </span>
+        <i class='fa-solid fa-xmark fa-xl tw-mt-[10px]  ' id='crossalert'></i>
+      </div>";
+      }
+?>
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">SevenVerse</a>
@@ -88,10 +95,10 @@
                   <label for="profilePic" class="form-control tw-bg-transparent tw-border-0 tw-text-white ubuntu-regular tw-font-medium tw-left-0 ">Your Picture</label>
                   <input type="file" name="pic" class="form-control tw-bg-white  tw-font-normal" required><br><br><br>
                  
-                 <div id="nexts" class="tw-absolute  tw-right-1  tw-bottom-0   tw-text-lg ubuntu-bold-italic tw-p-2 tw-bg-transparent tw-border tw-w-20   tw-border-indigo-400 tw-text-indigo-400  tw-rounded-lg hover:tw-bg-indigo-400 hover:tw-text-white hover:tw-text-xl hover:tw-cursor-pointer transition" > Next</div>
+                 <div id="next" class="tw-absolute  tw-right-1  tw-bottom-0 tw-text-center  tw-text-lg ubuntu-bold-italic tw-p-2 tw-bg-transparent tw-border tw-w-20   tw-border-indigo-400 tw-text-indigo-400  tw-rounded-lg hover:tw-bg-indigo-400 hover:tw-text-white hover:tw-text-xl hover:tw-cursor-pointer transition" > Next</div>
                   
                 </div>
-                <div id="" class="block2 tw-hidden">
+                <div class="block2 tw-hidden">
                   <label for="Email" class="form-control tw-bg-transparent tw-border-0 tw-text-white ubuntu-regular tw-font-medium tw-left-0 ">Email</label>
                   <input type="email" class="form-control tw-bg-white  tw-font-normal " name="email" placeholder="Enter your email" required><br>
                   <label for="Password" class="form-control tw-bg-transparent tw-border-0 tw-text-white ubuntu-regular tw-font-medium tw-left-0 ">Password</label>

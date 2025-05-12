@@ -10,10 +10,10 @@
             $query="INSERT INTO album VALUES('$album_code','$album_name','$album_date','$email')";
             if(mysqli_query($conn,$query)>0){
                 mkdir("gallery/$code/$album_code");
-                header("location:profile.php?success=1");
+                header("location:profile.php?albsuccess=1");
             }
             else{
-                header("location:profile.php?again=1");
+                header("location:profile.php?albagain=1");
             }
         }
         else{

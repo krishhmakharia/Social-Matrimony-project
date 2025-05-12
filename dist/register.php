@@ -29,7 +29,7 @@
             if(move_uploaded_file($_FILES["pic"]["tmp_name"],$target)){
                 if(mysqli_query($conn,"INSERT INTO details VALUES($sn,'$code','$fname','$lname','$email','$pass','$gender','$caste','$religion','$occupation','$birth','','$city','$state','$country')")>0){
                     mkdir("gallery/$code");
-                    header("location:index.php?success=1");
+                    header("location:index.php?Regsuccess=1");
                 }
                 else{
                     header("location:registeration.php?again=1");

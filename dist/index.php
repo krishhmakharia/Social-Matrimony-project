@@ -9,7 +9,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
     <link rel="stylesheet" href="custom.css">
   </head>
-  <body class="tw-bg-black tw-text-white">
+  <body class="tw-bg-black tw-text-white" id="index">
+    <?php 
+      if(isset($_GET["Regsuccess"])){
+        echo "<div class='alert alert-success tw-mt-24 tw-mx-4 tw-flex tw-justify-between fixed-top' id='alertbar' role='alert'>
+        <span><strong>Success!</strong> Registration successful. Please login to continue.</span>
+        <i class='fa-solid fa-xmark fa-xl tw-mt-[10px]  ' id='crossalert'></i>
+      </div>";
+      }else if(isset($_GET["error"])){
+        echo "<div class='alert alert-danger tw-mt-24 tw-mx-4 tw-flex tw-justify-between fixed-top' id='alertbar' role='alert'>
+        <span><strong>Error!</strong> Something went wrong. Please try again.</span>
+        <i class='fa-solid fa-xmark fa-xl tw-mt-[10px]  ' id='crossalert'></i>
+      </div>";
+    }
+    ?>
+    <!-- <div class="alert alert-success tw-mt-24 tw-mx-4 tw-flex tw-justify-between fixed-top" role="alert">
+      <span><strong>Success!</strong> Indicates a successful or positive action.</span>
+      <i class="fa-solid fa-xmark fa-xl tw-mt-[10px]  "></i>
+    </div> -->
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
@@ -39,6 +56,7 @@
         </div>
       </div>
     </nav>
+    
     <!-- The Modal -->
   <div class="modal" id="myModal">
     <div class="modal-dialog">
@@ -46,9 +64,22 @@
             <div class="card-body tw-relative ">
             <button type="button" class="btn-close tw-absolute tw-top-0 tw-right-0 tw-m-4" data-bs-dismiss="modal"></button>
                 <div class="text-center"> 
-                    <h1 class="card-title h3 ">Sign in</h1>
-                    <p class="card-text text-muted">Sign in below to access your account</p>
+                    <h1 class="card-title h3 tw-text-indigo-500  tw-font-bold ">SevenVerse</h1>
+                    <p class="card-text text-muted">Login below to access your account</p>
                 </div>
+                <?php 
+                  if(isset($_GET["invalid"])){
+                    echo "<div class='alert alert-danger tw-mt-4 tw-mx-2 tw-flex tw-justify-center' id='alertbar' role='alert'>
+                    <span><strong>Invalid id!</strong> Please use valid Registered email</span>
+                    
+                  </div>";
+                  }else if(isset($_GET["invalidpass"])){
+                    echo "<div class='alert alert-danger tw-mt-4 tw-mx-2 tw-flex tw-justify-center' id='alertbar' role='alert'>
+                    <span><strong>Invalid Password!</strong> Please use valid Password</span>
+                   
+                  </div>";
+                }
+                ?>
                 <div class="mt-4">
                     <form action="check.php" method="post">
                         <div class="mb-4">
@@ -60,7 +91,7 @@
                             <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-dark btn-lg">Sign in</button>
+                            <button type="submit" class="btn btn-dark btn-lg">Login</button>
                         </div>
                         <p class="text-center text-muted mt-4">Don't have an account yet?
                             <a href="registration.php" class="text-decoration-none">Sign up</a>.
@@ -131,15 +162,12 @@
           <div class="tw-text-center"><h2 class="text-center mb-2">About</h2></div>
           <div class="tw-justify-items-center tw-text-center"><h5 class="superHeading">Seven Verse</h5></div>
         </div>
-        <div class="tw-p-4">
-          <pre class="tw-text-wrap tw-p-4 ubuntu-light tw-font-normal tw-text-lg ">
-SevenVerse is a premium matrimonial platform designed to bring people closer to their ideal life partner. We understand that choosing a life partner is one of the most significant decisions in a person's life, and our platform is built to support and guide users every step of the way. With a user-friendly interface and a seamless experience, SevenVerse makes the journey of finding love smooth, secure, and enjoyable.
-
-At the heart of SevenVerse lies our advanced matching algorithm, which goes beyond basic filters to truly understand individual preferences, values, and compatibility factors. Our technology is crafted to provide accurate and personalized match suggestions, ensuring that users connect with people who share similar life goals, interests, and cultural backgrounds. This intelligent matchmaking process increases the chances of meaningful and long-lasting relationships.
-
-We take immense pride in maintaining a high-quality and verified database of profiles. Every user on SevenVerse undergoes a thorough verification process to ensure authenticity and reliability. This helps foster a safe and trustworthy environment, where individuals can interact with confidence and peace of mind. Our commitment to security and privacy is unwavering, so users can focus on building connections without any concerns.
-
-SevenVerse is more than just a matchmaking service — it’s a community that values love, trust, and lifelong companionship. Whether you're seeking a partner based on traditional values or modern preferences, our platform caters to diverse needs. With dedicated support and continuous innovations, SevenVerse is your trusted companion in the journey of love and togetherness.          </pre>
+        <div class="tw-p-0  tw-pt-0">
+          <p class="tw-text-wrap tw-p-6 tw-pb-0 ubuntu-light tw-font-ligt tw-text-center tw-text-xl tw-mx-2 ">
+            SevenVerse is a premium matrimonial platform designed to help you find your ideal life partner with ease and confidence. Our advanced matching algorithm goes beyond basic filters, offering personalized match suggestions based on your values, preferences, and lifestyle.
+            With a secure, user-friendly interface and verified profiles, we ensure a safe and trustworthy environment for building genuine connections. Whether you seek a partner with traditional values or modern outlooks, SevenVerse supports your journey with care, innovation, and commitment.
+            <p class=" tw-text-wrap tw-mt-0 tw-pt-0 ubuntu-light tw-font-ligt tw-text-center tw-text-2xl ">Find <b class="tw-text-red-500 tw-text-inherit">love</b>, Build <b class="tw-text-indigo-400 ">trust</b>, Start your story with SevenVerse.</p>
+          </p>        
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 <?php 
     include ("db.php");
     if(empty($_POST['email'])||empty($_POST['password'])){
-        header("location:index.php?empty=1");   
+        header("location:index.php?modal=open&empty=1");   
     }
     else{
         $email=$_POST['email'];
@@ -14,11 +14,11 @@
                     header("location:profile.php");
                 }
                 else{
-                    header("location:index.php?invalpass=1");
+                    header("location:index.php?modal=open&invalidpass=1");
                 }
             }
             else{
-                header("location:index.php?invalid=1");
+                header("location:index.php?modal=open&invalid=1");
             }
         }
         else{

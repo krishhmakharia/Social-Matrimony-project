@@ -20,7 +20,6 @@ if (isset($_COOKIE["login"])) {
 
     <body class="tw-bg-slate-950   ">
         <div class="tw-flex tw-flex-col-reverse md:tw-flex-row tw-flex-wrap ">
-
             <!-- Sidebar and bottom bar -->
             <div id="sidebar" class="tw-fixed tw-z-[9999] md:tw-top-0  tw-bottom-0 md:tw-left-0 tw-w-full md:tw-w-64 tw-border-t-[1px] md:tw-border-r-[1px] tw-border-gray-700 tw-h-14  md:tw-h-full tw-bg-black  tw-text-white ">
                 <!-- <button id="toggleBtn" class="tw-absolute tw-top-0 tw-right-0 tw-text-white tw-px-2 tw-py-2 tw-rounded tw-mb-4">☰</button> -->
@@ -47,9 +46,27 @@ if (isset($_COOKIE["login"])) {
             </div>
 
             <!-- Main Content -->
-            <div class="tw-grid-cols-1  tw-mt-14 md:tw-ml-64 tw-w-full  md:tw-mt-0  tw-bg-slate-950   tw-justify-center tw-justify-items-center ">
-                <!--Profile header-->
-                <div class="tw-grid tw-grid-cols-2 tw-p-4  md:tw-w-1/2 ">
+            <div class='tw-grid-cols-1  tw-mt-14 md:tw-ml-64 tw-w-full  md:tw-mt-0  tw-bg-slate-950   tw-justify-center tw-justify-items-center p-2 ' id='crossbar'>
+                <!-- <div class='tw-bg-red-400 tw-rounded-lg tw-h-16 tw-w-full tw-flex tw-justify-between tw-items-center tw-p-4 tw-mt-6 tw-text-white'>
+                    <span><strong>Success!</strong> Registration successful. Please login to continue.</span>
+                    <i class='fa-solid fa-xmark fa-xl' id='crossalert'></i>
+                </div> -->
+                <?php 
+                    if(isset($_GET["albsuccess"])){
+                        echo "<div id='alertbar' class='tw-bg-green-400 tw-rounded-lg tw-h-16 tw-w-full tw-flex tw-justify-between tw-items-center tw-p-4 tw-mt-6 tw-text-white'>
+                        <span><strong>Success!</strong> Album created successfully.</span>
+                        <i class='fa-solid fa-xmark fa-xl hover:tw-cursor-pointer' id='crossalert'></i>
+                    </div>";
+                    }else if(isset($_GET["albagain"])){
+                        echo "<div id='alertbar' class='tw-bg-red-400 tw-rounded-lg tw-h-16 tw-w-full tw-flex tw-justify-between tw-items-center tw-p-4 tw-mt-6 tw-text-white'>
+                        <span><strong>Failed!</strong> Album creation failed.</span>
+                        <i class='fa-solid fa-xmark fa-xl hover:tw-cursor-pointer ' id='crossalert'></i>
+                    </div>";
+                    }
+                ?>    
+            <!--Profile header-->
+                <div class="tw-grid tw-grid-cols-2 tw-p-4 md:tw-mt-14 md:tw-mb-10 md:tw-w-1/2 ">
+                    
                     <?php
                     $query = mysqli_query($conn, "SELECT * FROM details WHERE email='$email' ");
                     if ($row = mysqli_fetch_array($query)) {
@@ -68,8 +85,8 @@ if (isset($_COOKIE["login"])) {
                                 <a href="edit.php" class="tw-w-full"><button class=" tw-bg-white tw-bg-opacity-25  tw-text-gray-200 tw-p-2 tw-h-8 md:tw-w-full tw-rounded-lg tw-text-sm ubuntu-regular hover:tw-bg-opacity-20">Edit profile</button></a>
                                 <button class=" tw-bg-white tw-bg-opacity-25  tw-text-gray-200 tw-p-2 tw-h-8 tw-rounded-lg tw-text-sm ubuntu-regular hover:tw-bg-opacity-20 md:tw-w-full">Share</button>
                             </div>
-                            <div class="tw-p-1 tw-flex tw-text-white">
-                                <p class="ubantu-regular tw-font-normal">Place</p>
+                            <div class="tw-p-1 tw-flex tw-text-white tw-pb-0">
+                                <p class="ubantu-regular tw-font-normal">From</p>
                                 <p class="ubantu-light tw-font-light tw-text-gray-400"><?= $address ?></p>
                             </div>
                             <div class="tw-p-1 tw-flex tw-text-white tw-gap-1">

@@ -1,4 +1,12 @@
-console.log("Welcome");
+//handel alert 
+const alert_bar=document.querySelector("#alertbar");
+  const cross_alert=document.querySelector("#crossalert");
+  cross_alert.addEventListener("click",()=>{
+    alert_bar.classList.add("tw-hidden");
+    window.location.href = "profile.php"
+  })
+
+  //delete album
 let crossbtns=document.querySelectorAll(".crossbtn");
 crossbtns.forEach((btn)=>{
     btn.addEventListener("click",()=>{
